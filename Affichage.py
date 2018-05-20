@@ -310,7 +310,11 @@ def visualisationCube(cube): #afficher le cube
 
     print("-----")
 
-
+def main():
+    cube = creationCube()
+    snake = analyse(cube)
+    
+    
 if __name__ == "__main__": # vérification pour tester les différents sous-progromme créer
     phase0 = list()
     snake = list()
