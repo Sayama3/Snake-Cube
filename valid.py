@@ -15,8 +15,8 @@ def positif(cube): #transformer le cube en valeur positif
 
 def coherence(numeroCube,position,snake,cubePositif):
 	test = 0 #variable de test afin de vérifié si la position est comprise dedans
-	position1 = position - 1
-	position2 = position - 2
+	position1 = position - 1 # variable de la position précédente
+	position2 = position - 2 # variable de la position précédente de la position précédente
 	if position >= 3:
 		for i in range( sum(cubePositif) ):
 			test += cubePositif[i]
