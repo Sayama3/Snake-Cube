@@ -14,18 +14,23 @@ def positif(cube): #transformer le cube en valeur positif
 		return cubePositif
 
 def coherence(numeroCube,position,snake,cubePositif):
-	test = 0 #variable de test afin de vérifié si la position est comprise dedans
+	test = 0 #variable de test afin de vérifier si la position est comprise dedans
 	numeroCube1 = numeroCube - 1 # variable de la position précédente
 	numeroCube2 = numeroCube - 2 # variable de la position précédente de la position précédente
 	cube1 = snake.index[numeroCube1]
 	cube2 = snake.index[numeroCube2]
 	
+	
 	if numeroCube >= 3:
 		for i in range( cubePositif ):
 			test += cubePositif[i]
 			if numeroCube == test :
-				
+				if alignes(position, cube1, cube2) == True:
+					return True
+				else:
+					return False
 			elif numeroCube < test :
+				
 				
 				
 				
