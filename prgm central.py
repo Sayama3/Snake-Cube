@@ -4,13 +4,8 @@ from Evan import *
 from tkinter import *
 import time
 
-
-def main():
-    cube = creationCube()
-    snake = analyse(cube)
-
-    print(snake)
+snake = main()
     
     
 if __name__ == "__main__":
-    main()
+    
