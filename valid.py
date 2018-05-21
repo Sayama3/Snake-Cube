@@ -1,8 +1,8 @@
 def valid(numeroCube,position,snake):
 	if snake[position] != 0:
-		return -1
+		return snake[position]
 	else:
-		snake[position] = numeroCube
+		return numeroCube
 
 def position():
 	
