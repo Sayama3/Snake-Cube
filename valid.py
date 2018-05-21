@@ -14,7 +14,11 @@ def positif(cube): #transformer le cube en valeur positif
 		return cubePositif
 
 def coherence(numeroCube,position,snake,cubePositif):
-	if i >= 3:
+	if position >= 3:
+		f
+	else :
+		return TRUE
+		
 		
 	
 	
