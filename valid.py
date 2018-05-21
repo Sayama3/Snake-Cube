@@ -6,7 +6,7 @@ def valid(numeroCube,position,snake,cube):
 		cubePositif = positif(cube)
 		position(numeroCube,position,snake,cubePositif)
 
-def positif(cube):
+def positif(cube): #transformer le cube en valeur positif
 	cubePositif = list()
 	for i in cube:
 		i = int( fabs(i) )
