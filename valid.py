@@ -24,7 +24,7 @@ def coherence(numeroCube,position,snake,cubePositif):
 	z = 5*5
 	
 	if position >= 3:
-		for i in range( sum(cubePositif) ):
+		for i in range( cubePositif ):
 			test += cubePositif[i]
 			if position == test :
 				
