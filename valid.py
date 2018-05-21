@@ -27,13 +27,15 @@ def coherence(numeroCube,position,snake,cubePositif):
 			
 			
 			
+			
 			if numeroCube == test :
 				if alignes(position, positionCube1, positionCube2) == True:
 					return True
 				else:
 					return False
+			
 			elif numeroCube < test :
-				if 
+			
 				
 				
 				
