@@ -13,6 +13,6 @@ def positif(cube): #transformer le cube en valeur positif
 		cubePositif.append(i)
 		return cubePositif
 
-def position(numeroCube,position,snake,cubePositif):
+def coherence(numeroCube,position,snake,cubePositif):
 	
 	
