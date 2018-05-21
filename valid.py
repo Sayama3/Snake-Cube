@@ -1,9 +1,18 @@
-def valid(numeroCube,position,snake):
+from math import *
+def valid(numeroCube,position,snake,cube):
 	if snake[position] != 0:
 		return -1
 	else:
-		return numeroCube
+		cubePositif = positif(cube)
+		position(numeroCube,position,snake,cubePositif)
 
-def position():
+def positif(cube):
+	cubePositif = list()
+	for i in cube:
+		i = int( fabs(i) )
+		cubePositif.append(i)
+		return cubePositif
+
+def position(numeroCube,position,snake,cubePositif):
 	
 	
