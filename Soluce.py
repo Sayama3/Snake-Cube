@@ -1,7 +1,7 @@
 """SOLUTION DU snake PUZZLE"""
 from Iannis import *
-cube = creationCube()
-snake = analyse2(cube)
+
+snake = main()
 
 N = 5
 xdep = 1       # nombre de pièces à bouger dans l'axe x
