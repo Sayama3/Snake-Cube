@@ -1,5 +1,6 @@
 """SOLUTION DU snake PUZZLE"""
 from Affichage import *
+frome Verif import *
 
 snake = main()
 
@@ -67,7 +68,6 @@ def moves(losange, position, direction, longueur):
             Mvalides.append(Ndirections)
     return Mvalides
 
-from Iannis import *
 def solve(losange, position, direction, snake, Numpiece):
     """le solveur de cube"""
     import time
