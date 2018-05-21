@@ -58,4 +58,33 @@ def alignes(position, cube1, cube2):
 	else:
 		return -1
 	
+def angledroit(position,cube1,cube2):
+	#variable de déplacement dans le plan
+	x = 1
+	y = 5
+	z = 5*5
+	
+	if cube1 == position - x:
+		if cube2 == cube1 - y:
+			return 1
+		if cube2 == cube1 - z:
+			return 1
+		else:
+			return -1
+	elif cube1 == position - y:
+		if cube2 == cube1 - x:
+			return 1
+		if cube2 == cube1 - z:
+			return 1
+		else:
+			return -1
+	elif cube1 == position - z:
+		if cube2 == cube1 - x:
+			return 1
+		if cube2 == cube1 - y:
+			return 1
+		else:
+			return -1
+	else:
+		return -1
 	
