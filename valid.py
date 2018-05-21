@@ -55,5 +55,7 @@ def alignes(position, cube1, cube2):
 			return 1
 		else:
 			return -1
-		
+	else:
+		return -1
+	
 	
