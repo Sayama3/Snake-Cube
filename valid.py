@@ -4,7 +4,7 @@ def valid(numeroCube,position,snake,cube):
 		return -1
 	else:
 		cubePositif = positif(cube)
-		position(numeroCube,position,snake,cubePositif)
+		coherence(numeroCube,position,snake,cubePositif)
 
 def positif(cube): #transformer le cube en valeur positif
 	cubePositif = list()
@@ -17,6 +17,12 @@ def coherence(numeroCube,position,snake,cubePositif):
 	test = 0 #variable de test afin de vérifié si la position est comprise dedans
 	position1 = position - 1 # variable de la position précédente
 	position2 = position - 2 # variable de la position précédente de la position précédente
+	
+	#variable de déplacement dans le plan
+	x = 1
+	y = 5
+	z = 5*5
+	
 	if position >= 3:
 		for i in range( sum(cubePositif) ):
 			test += cubePositif[i]
@@ -28,7 +34,3 @@ def coherence(numeroCube,position,snake,cubePositif):
 				
 	else :
 		return TRUE
-		
-		
-	
-	
