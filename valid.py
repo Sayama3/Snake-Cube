@@ -6,3 +6,4 @@ def valid(numeroCube,position,snake):
 
 def position():
 	
+	
