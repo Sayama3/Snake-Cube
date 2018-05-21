@@ -1,6 +1,6 @@
 """SOLUTION DU snake PUZZLE"""
 from Affichage import *
-frome Verif import *
+from valid import *
 
 snake = main()
 
