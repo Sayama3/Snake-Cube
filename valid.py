@@ -41,5 +41,19 @@ def coherence(numeroCube,position,snake,cubePositif):
 
 def alignes():
 	if cube1 == position - x:
+		if cube2 == position - x:
+			return 1
+		else:
+			return -1
+	elif cube1 == position - y:
+		if cube2 == position - y:
+			return 1
+		else:
+			return -1
+	elif cube1 == position - z:
+		if cube2 == position - z:
+			return 1
+		else:
+			return -1
 		
 	
