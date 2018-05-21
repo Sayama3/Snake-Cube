@@ -40,23 +40,24 @@ def alignes(position, cube1, cube2):
 	y = 5
 	z = 5*5
 	
+	#vérification que le cube précédent et le cube qui précède le précédent sont alignés, sinon la fonction est fausse
 	if cube1 == position - x:
 		if cube2 == cube1 - x:
-			return 1
+			return True
 		else:
-			return -1
+			return False
 	elif cube1 == position - y:
 		if cube2 == cube1 - y:
-			return 1
+			return True
 		else:
-			return -1
+			return False
 	elif cube1 == position - z:
 		if cube2 == cube1 - z:
-			return 1
+			return True
 		else:
-			return -1
+			return False
 	else:
-		return -1
+		return False
 	
 def angledroit(position,cube1,cube2):
 	#variable de déplacement dans le plan
@@ -64,27 +65,29 @@ def angledroit(position,cube1,cube2):
 	y = 5
 	z = 5*5
 	
+	#vérification que vers le cube précédent et celui qui précède le précédent il y a un angle droit qq part,
+	#sinon la fonction est fausse
 	if cube1 == position - x:
 		if cube2 == cube1 - y:
-			return 1
+			return True
 		if cube2 == cube1 - z:
-			return 1
+			return True
 		else:
-			return -1
+			return False
 	elif cube1 == position - y:
 		if cube2 == cube1 - x:
-			return 1
+			return True
 		if cube2 == cube1 - z:
-			return 1
+			return True
 		else:
-			return -1
+			return False
 	elif cube1 == position - z:
 		if cube2 == cube1 - x:
-			return 1
+			return True
 		if cube2 == cube1 - y:
-			return 1
+			return True
 		else:
-			return -1
+			return False
 	else:
-		return -1
+		return False
 	
