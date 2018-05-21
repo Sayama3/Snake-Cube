@@ -20,11 +20,6 @@ def coherence(numeroCube,position,snake,cubePositif):
 	cube1 = snake.index[numeroCube1]
 	cube2 = snake.index[numeroCube2]
 	
-	#variable de déplacement dans le plan
-	x = 1
-	y = 5
-	z = 5*5
-	
 	if numeroCube >= 3:
 		for i in range( cubePositif ):
 			test += cubePositif[i]
@@ -40,6 +35,11 @@ def coherence(numeroCube,position,snake,cubePositif):
 		return TRUE
 
 def alignes(position, cube1, cube2):
+	#variable de déplacement dans le plan
+	x = 1
+	y = 5
+	z = 5*5
+	
 	if cube1 == position - x:
 		if cube2 == cube1 - x:
 			return 1
