@@ -32,7 +32,7 @@ def coherence(numeroCube,position,snake,cubePositif):
 	elif numeroCube == 2 :
 		
 	else :
-		return TRUE
+		return True
 
 def alignes(position, cube1, cube2):
 	#variable de déplacement dans le plan
