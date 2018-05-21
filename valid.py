@@ -15,24 +15,24 @@ def positif(cube): #transformer le cube en valeur positif
 
 def coherence(numeroCube,position,snake,cubePositif):
 	test = 0 #variable de test afin de vérifié si la position est comprise dedans
-	position1 = position - 1 # variable de la position précédente
-	position2 = position - 2 # variable de la position précédente de la position précédente
+	numeroCube1 = numeroCube - 1 # variable de la position précédente
+	numeroCube2 = numeroCube - 2 # variable de la position précédente de la position précédente
 	
 	#variable de déplacement dans le plan
 	x = 1
 	y = 5
 	z = 5*5
 	
-	if position >= 3:
+	if numeroCube >= 3:
 		for i in range( cubePositif ):
 			test += cubePositif[i]
-			if position == test :
+			if numeroCube == test :
 				
-			elif position < test :
+			elif numeroCube < test :
 				
 				
 				
-	elif position == 2 :
+	elif numeroCube == 2 :
 		
 	else :
 		return TRUE
