@@ -1,9 +1,8 @@
-def valid(verif):
-	for i in range(27):
-		if verif == -1
-			return False
-		else
-			return True
+def valid(numeroCube,position,snake):
+	if snake[position] != 0:
+		return -1
+	else:
+		snake[position] = numeroCube
 
 def position():
 	
