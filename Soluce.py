@@ -1,5 +1,5 @@
 """SOLUTION DU snake PUZZLE"""
-from Iannis import *
+from Affichage import *
 
 snake = main()
 
