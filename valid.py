@@ -32,5 +32,7 @@ def coherence(numeroCube,position,snake,cubePositif):
 				
 				
 				
+	elif position == 2 :
+		
 	else :
 		return TRUE
