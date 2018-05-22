@@ -1,6 +1,6 @@
 from Affichage import *
 from Soluce import *
-from validimport *
+from valid import *
 from tkinter import *
 import time
 
