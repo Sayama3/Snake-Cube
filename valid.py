@@ -24,6 +24,10 @@ def coherence(numeroCube,position,snake,cubePositif):
 	positionCube2 = snake.index[numeroCube2]
 	save1 = int()
 	save2 = int()
+	#variable de déplacement dans le plan
+	x = 1
+	y = 5
+	z = 5*5
 	
 	if numeroCube >= 3:
 		for i in range( cubePositif ):
@@ -77,6 +81,20 @@ def coherence(numeroCube,position,snake,cubePositif):
 				
 				
 	elif numeroCube == 2 :
+		if positionCube1 - x == position:
+			return True
+		elif positionCube1 + x == position:
+			return True
+		elif positionCube1 - y == position:
+			return True
+		elif positionCube1 + y == position:
+			return True
+		elif positionCube1 - z == position:
+			return True
+		elif positionCube1 + z == position:
+			return True
+		else:
+			return False
 		
 		
 	else :
