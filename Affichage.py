@@ -19,9 +19,10 @@ def creationCube(): #interface pour l'utilisateur et lui permettre de rentré la
         def __init__(self, fenetre, **kwargs):
             Frame.__init__(self, fenetre, width=768, height=576, **kwargs)
             self.pack(fill=BOTH)
-            self.Position = 30
-            self.last = int()
-            self.last2 = list()
+            self.Position = 30#position initial
+            self.last = int() #entier qui correspond à la dernière action
+            self.last2 = list() #liste contenant toute les actions
+            
             self.nombre = int(0) #c'est le numérotième cube fait
             self.Ordre = list() # c'est pour connaitre l'ordre des action effectuer
             
@@ -73,7 +74,7 @@ def creationCube(): #interface pour l'utilisateur et lui permettre de rentré la
 
         # Ici c'est les fonction pour créer le serpent
         
-        def Start(self):
+        def Start(self): #fonction qui permet d'initialiser la première variable
             if self.nombre == 0:
                 cube[self.Position] = self.nombre
                 self.nombre +=1
@@ -87,7 +88,7 @@ def creationCube(): #interface pour l'utilisateur et lui permettre de rentré la
                 self.alert["text"] = "On a déjà commencé"
 
                 
-        def Xplus(self):
+        def Xplus(self): #ajouter un élément en +X (orienté dans le plan)
             self.last = 1
             self.Position = self.Position + self.last
             self.last2.append(self.last)
@@ -115,7 +116,7 @@ def creationCube(): #interface pour l'utilisateur et lui permettre de rentré la
                 
             
                 
-        def Xmoins(self):
+        def Xmoins(self): #ajouter un élément en -X (orienté dans le plan)
             self.last = -1
             self.Position = self.Position + self.last
             self.last2.append(self.last) 
@@ -142,7 +143,7 @@ def creationCube(): #interface pour l'utilisateur et lui permettre de rentré la
                 
             
 
-        def Ymoins(self):
+        def Ymoins(self): #ajouter un élément en -Y (orienté dans le plan)
             self.last = -29
             self.Position = self.Position + self.last
             self.last2.append(self.last)
@@ -169,7 +170,7 @@ def creationCube(): #interface pour l'utilisateur et lui permettre de rentré la
                 
             
 
-        def Yplus(self):
+        def Yplus(self): #ajouter un élément en +Y (orienté dans le plan)
             self.last = 29
             self.Position = self.Position + self.last
             self.last2.append(self.last)
@@ -195,7 +196,7 @@ def creationCube(): #interface pour l'utilisateur et lui permettre de rentré la
                 
             
 
-        def Annuler(self):
+        def Annuler(self): #fonction servant à annuler une action
             if self.nombre > 1:
                 cube[self.Position] = 0
                 self.Position = self.Position - self.last2[-1]
@@ -211,7 +212,7 @@ def creationCube(): #interface pour l'utilisateur et lui permettre de rentré la
 
 
 
-        def Quitter(self):
+        def Quitter(self): #fonction servant à Quitter
             if len(self.Ordre) == 27:
                 fenetre.quit()
             else:
@@ -228,22 +229,21 @@ def creationCube(): #interface pour l'utilisateur et lui permettre de rentré la
 
 
 def analyse(cube): #première étapes pour transformer le cube créer en une liste de chiffres
-    phase1 = list()
-    snake = list()
-    base = 1
-
-    
+    base = 1 #base permettant de créer les futurs valeur X & Y
+    phase1 = [base] #initialiser la liste
+    snake = list() #cube final à renvoyer
+    X = int() #entier permettant de différencier X & Y
+    Y = int() #entier permettant de différencier X & Y
     for i in range(len(cube)):
-        if cube[i] == 'Start': 
-            phase1 = [base]
-        if i == 1:
+            
+        if i == 1: #configuration des valeurs X & Y
             if cube[i] == '+X' or cube[i] == '-X':
                 X = base
                 Y = base + 1
             else:
                 Y = base
                 X = base + 1
-
+        #créer une liste transformant les lettres en chiffres
         if cube[i] == '+X':
             phase1.append(X)
         elif cube[i] == '-X':
@@ -258,13 +258,13 @@ def analyse(cube): #première étapes pour transformer le cube créer en une lis
     return snake
 
 def analyse2(phase1): #deuxième étapes pour transformer la liste de chiffre en une liste de droite jusqu'au prochain angle droit
-    test = bool()
-    verif1 = int()
-    verif2 = int()
-    verif3 = int()
-    phase2 = list()
+
+    verif1 = int()# variable uniquement utiliser pour jongler entre les étapes et garder les bonnes valeurs
+    verif2 = int()# variable uniquement utiliser pour jongler entre les étapes et garder les bonnes valeurs
+    verif3 = int()# variable uniquement utiliser pour jongler entre les étapes et garder les bonnes valeurs
+    phase2 = list()#list permettant de passer de la première étapes à la deuxième
     
-    for i in range(len(phase1)):
+    for i in range(len(phase1)):#boucle permettant de transformer la liste de chiffre en une liste desegemnt avant angle droit
         if i == 0:
             verif1 = phase1[i]
             verif3 = verif1
@@ -288,20 +288,21 @@ def analyse2(phase1): #deuxième étapes pour transformer la liste de chiffre en
     return phase2
 
 
-def visualisationCube(cube): #afficher le cube
+def visualisationCube(cube):
     """ Affichage du cube """
+    print("face n°1 :")
     print(cube[31],cube[32],cube[33])
     print(cube[36],cube[37],cube[38])
     print(cube[41],cube[42],cube[43])
-
+    
     print("")
-
+    print("face n°2 :")
     print(cube[56],cube[57],cube[58])
     print(cube[61],cube[62],cube[63])
     print(cube[66],cube[67],cube[68])
 
     print("")
-
+    print("face n°3 :")
     print(cube[81],cube[82],cube[83])
     print(cube[86],cube[87],cube[88])
     print(cube[91],cube[92],cube[93])
@@ -310,7 +311,9 @@ def visualisationCube(cube): #afficher le cube
 
     print("-----")
 
-def main():
+    i = input('appuyé sur "entrée" pour continuer\n')
+
+def constructionSnake(): #raccourcis pour créer le cube
     cube = creationCube()
     snake = analyse(cube)
     
