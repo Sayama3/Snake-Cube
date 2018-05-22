@@ -19,7 +19,8 @@ def coherence(numeroCube,position,snake,cubePositif):
 	numeroCube2 = numeroCube - 2 # variable de la position précédente de la position précédente
 	positionCube1 = snake.index[numeroCube1]
 	positionCube2 = snake.index[numeroCube2]
-	
+	save1 = int()
+	save2 = int()
 	
 	if numeroCube >= 3:
 		for i in range( cubePositif ):
@@ -35,7 +36,40 @@ def coherence(numeroCube,position,snake,cubePositif):
 					return False
 			
 			elif numeroCube < test :
-			
+				
+				if numeroCube1 <= test - cubePositif[i]:
+					save1 = test - cubePositif[i]
+				else:
+					save1 = test
+				if numeroCube2 <= test - cubePositif[i]:
+					save2 = test - cubePositif[i]
+				else:
+					save2 = test
+				
+				if test == save1:
+					if test == save2:
+						if alignes(position, positionCube1, positionCube2) == True:
+							return True
+						else:
+							return False
+					elif test == save2 + cubePositif[i]:
+						if angleDroit(position, positionCube1, positionCube2) == True:
+							return True
+						else:
+							return False 
+					else:
+						return false
+				elif test == save1 + cubePositif[i]:
+					if save1 == save2:
+						if angleDroit(position, positionCube1, positionCube2) == True:
+							return True
+						else:
+							return False 
+					else:
+						return False
+				else:
+					return False
+				
 				
 				
 				
@@ -69,7 +103,7 @@ def alignes(position, cube1, cube2):
 	else:
 		return False
 	
-def angledroit(position,cube1,cube2):
+def angleDroit(position,cube1,cube2):
 	#variable de déplacement dans le plan
 	x = 1
 	y = 5
