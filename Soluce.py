@@ -49,14 +49,6 @@ def unplace(losange, position, direction, longueur):
         position += direction
         losange[position] = 0
 
-def valid(losange, position, direction, longueur):
-    """renvoyer vrai si un mouvement est valide"""
-    for _ in range(longueur):
-        position += direction
-        if losange[position] != 0:
-            return False
-    return True
-
 def moves(losange, position, direction, longueur):
     """renvoyer le mouvement valide pour la position actuelle"""
     Mvalides = []
