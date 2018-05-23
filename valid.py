@@ -1,6 +1,6 @@
 def valid(numeroCube,position,snake,cube):
-	if snake[position] != 0:
-		return -1
+	if (cube[position]) != 0:
+		return False
 	else:
 		cubePositif = positif(cube)
 		if coherence(numeroCube,position,snake,cubePositif) == True:
@@ -54,7 +54,7 @@ def coherence(numeroCube,position,snake,cubePositif):
 				else:
 					save2 = test
 				 
-				if test == save1:
+				if test == save1 :
 					if test == save2:
 						if alignes(position, positionCube1, positionCube2) == True:
 							return True

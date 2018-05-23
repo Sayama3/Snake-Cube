@@ -316,6 +316,7 @@ def visualisationCube(cube):
 def constructionSnake(): #raccourcis pour créer le cube
     cube = creationCube()
     snake = analyse(cube)
+    return snake
     
     
 if __name__ == "__main__": # vérification pour tester les différents sous-progromme créer
