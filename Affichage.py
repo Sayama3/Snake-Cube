@@ -227,65 +227,45 @@ def creationCube(): #interface pour l'utilisateur et lui permettre de rentré la
 
 
 
-
-def analyse(cube): #première étapes pour transformer le cube créer en une liste de chiffres
-    base = 1 #base permettant de créer les futurs valeur X & Y
-    phase1 = [base] #initialiser la liste
-    snake = list() #cube final à renvoyer
-    X = int() #entier permettant de différencier X & Y
-    Y = int() #entier permettant de différencier X & Y
-    for i in range(len(cube)):
-            
-        if i == 1: #configuration des valeurs X & Y
-            if cube[i] == '+X' or cube[i] == '-X':
-                X = base
-                Y = base + 1
-            else:
-                Y = base
-                X = base + 1
-        #créer une liste transformant les lettres en chiffres
-        if cube[i] == '+X':
-            phase1.append(X)
-        elif cube[i] == '-X':
-            phase1.append(-X)
-        elif cube[i] == '+Y':
-            phase1.append(Y)
-        elif cube[i] == '-Y':
-            phase1.append(-Y)
-
-        if len(phase1) == 27:
-            snake = analyse2(phase1)
-    return snake
-
-def analyse2(phase1): #deuxième étapes pour transformer la liste de chiffre en une liste de droite jusqu'au prochain angle droit
-
-    verif1 = int()# variable uniquement utiliser pour jongler entre les étapes et garder les bonnes valeurs
-    verif2 = int()# variable uniquement utiliser pour jongler entre les étapes et garder les bonnes valeurs
-    verif3 = int()# variable uniquement utiliser pour jongler entre les étapes et garder les bonnes valeurs
-    phase2 = list()#list permettant de passer de la première étapes à la deuxième
+def analyse(cube): #fonctions tranformant la liste de "+X", "-Y"... en une liste de droite jusqu'au prochain angle droit
     
-    for i in range(len(phase1)):#boucle permettant de transformer la liste de chiffre en une liste desegemnt avant angle droit
-        if i == 0:
-            verif1 = phase1[i]
-            verif3 = verif1
-            
-            if verif1 == 2 or verif1 == -2:
-                verif1 = int(verif1/2)
-            
+    #première étape
+    
+    if cube[1] == '+X':
+        cube[0] = '+X'
+    elif cube[1] == '-X':
+        cube[0] = '-X'
+    elif cube[1] == '+Y':
+        cube[0] = '+Y'
+    elif cube[1] == '-Y':
+        cube[0] = '-Y'
+
         
-        if phase1[i] == verif3:
-            verif2 += verif1
+    #deuxième étapes
+        
+    snake = list() #c'est le serpent final
+    accumulateur = int() #c'est un accumulateur qui va servir a compter le nombre de cube.
+    for i in range(len(cube)):
+        if i == 0:
+            if cube[i] == '+X' or cube[i] == '+Y':
+                accumulateur = 1
+            else:
+                accumulateur = -1
         else:
-            phase2.append(verif2)
-            verif1 = phase1[i]
-            verif3 = verif1
-            
-            if verif1 == 2 or verif1 == -2:
-                verif1 = int(verif1/2)
-                
-            verif2 = verif1
-    phase2.append(verif2)
-    return phase2
+            if cube[i] == cube [i-1]:
+                if cube[i] == '+X' or cube[i] == '+Y':
+                    accumulateur += 1
+                else:
+                    accumulateur -= 1
+            else:
+                snake.append(accumulateur)
+                if cube[i] == '+X' or cube[i] == '+Y':
+                    accumulateur = 1
+                else:
+                    accumulateur = -1
+
+    snake.append(accumulateur)
+    return snake
 
 
 def visualisationCube(cube):
@@ -320,8 +300,10 @@ def constructionSnake(): #raccourcis pour créer le cube
     
     
 if __name__ == "__main__": # vérification pour tester les différents sous-progromme créer
-    phase0 = list()
+    j = 0
     snake = list()
 
     phase0 = ['Start', '+X', '+X', '+X', '+X', '+Y', '+Y', '+Y', '+Y', '-X', '-X', '-X', '+Y', '+Y', '+Y', '+X', '+X', '+X', '+X', '+Y', '+X', '-Y', '-Y', '-Y', '-Y', '+X', '+X']
     phase1 = [1,1,1,1,2,2,2,2,-1,-1,-1,-1,-2,-2,-2,-2]
+    a = analyse(phase0)
+    print(a)
