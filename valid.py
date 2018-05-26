@@ -14,7 +14,7 @@ def positif(cube): #transformer le cube en valeur positif
 	for i in cube:
 		i = int( math.fabs(i) )
 		cubePositif.append(i)
-		return cubePositif
+	return cubePositif
 
 def coherence(numeroCube,position,snake,cubePositif):
 	test = 0 #variable de test afin de vérifier si la position est comprise dedans
@@ -38,7 +38,7 @@ def coherence(numeroCube,position,snake,cubePositif):
 			
 			#vérification alignement
 			if numeroCube == test :
-				if alignes(position, positionCube1, positionCube2) == True:
+				if alignes(position, positionCube1, positionCube2):
 					return True
 				else:
 					return False
@@ -56,12 +56,12 @@ def coherence(numeroCube,position,snake,cubePositif):
 				 
 				if test == save1 :
 					if test == save2:
-						if alignes(position, positionCube1, positionCube2) == True:
+						if alignes(position, positionCube1, positionCube2):
 							return True
 						else:
 							return False
 					elif test == save2 + cubePositif[i]:
-						if angleDroit(position, positionCube1, positionCube2) == True:
+						if angleDroit(position, positionCube1, positionCube2):
 							return True
 						else:
 							return False 
@@ -69,7 +69,7 @@ def coherence(numeroCube,position,snake,cubePositif):
 						return false
 				elif test == save1 + cubePositif[i]:
 					if save1 == save2:
-						if angleDroit(position, positionCube1, positionCube2) == True:
+						if angleDroit(position, positionCube1, positionCube2):
 							return True
 						else:
 							return False 
@@ -108,18 +108,18 @@ def alignes(position, cube1, cube2):
 	z = 5*5
 	
 	#vérification que le cube précédent et le cube qui précède le précédent sont alignés, sinon la fonction est fausse
-	if cube1 == position - x:
-		if cube2 == cube1 - x:
+	if cube1 == position - x or cube1 == position + x:
+		if cube2 == cube1 - x or cube1 == position + x:
 			return True
 		else:
 			return False
-	elif cube1 == position - y:
-		if cube2 == cube1 - y:
+	elif cube1 == position - y or cube1 == position + y:
+		if cube2 == cube1 - y or cube1 == position + y:
 			return True
 		else:
 			return False
-	elif cube1 == position - z:
-		if cube2 == cube1 - z:
+	elif cube1 == position - z or cube1 == position + z:
+		if cube2 == cube1 - z or cube1 == position + z:
 			return True
 		else:
 			return False
@@ -134,27 +134,32 @@ def angleDroit(position,cube1,cube2):
 	
 	#vérification que vers le cube précédent et celui qui précède le précédent il y a un angle droit qq part,
 	#sinon la fonction est fausse
-	if cube1 == position - x:
-		if cube2 == cube1 - y:
+	if cube1 == position - x or cube1 == position + x:
+		if cube2 == cube1 - y or cube1 == position + y:
 			return True
-		if cube2 == cube1 - z:
-			return True
-		else:
-			return False
-	elif cube1 == position - y:
-		if cube2 == cube1 - x:
-			return True
-		if cube2 == cube1 - z:
+		if cube2 == cube1 - z or cube1 == position + z:
 			return True
 		else:
 			return False
-	elif cube1 == position - z:
-		if cube2 == cube1 - x:
+	elif cube1 == position - y or cube1 == position + y:
+		if cube2 == cube1 - x or cube1 == position + x:
 			return True
-		if cube2 == cube1 - y:
+		if cube2 == cube1 - z or cube1 == position + z:
+			return True
+		else:
+			return False
+	elif cube1 == position - z or cube1 == position + z:
+		if cube2 == cube1 - x or cube1 == position + x:
+			return True
+		if cube2 == cube1 - y or cube1 == position + y:
 			return True
 		else:
 			return False
 	else:
 		return False
+
+if __name__ == '__main__':
+        cube = [5, 4, -3, 3, 4, 1, 1, -4, 2]
+        cube2 = positif(cube)
+        
 	
