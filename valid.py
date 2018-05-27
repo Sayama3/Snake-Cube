@@ -16,72 +16,22 @@ def positif(cube): #transformer le cube en valeur positif
 		cubePositif.append(i)
 	return cubePositif
 
+
+
 def coherence(numeroCube,position,snake,cubePositif):
 	test = 0 #variable de test afin de vérifier si la position est comprise dedans
-	numeroCube1 = numeroCube - 1 # variable de la position précédente
-	numeroCube2 = numeroCube - 2 # variable de la position précédente de la position précédente
-	positionCube1 = snake.index[numeroCube1]
-	positionCube2 = snake.index[numeroCube2]
-	save1 = int() #variable pour stocker i
-	save2 = int() #variable pour stocker i
-	#variable de déplacement dans le plan
+	numeroCube1 = numeroCube - 1 # variable du numéro du cube précédente
+	numeroCube2 = numeroCube - 2 # variable du numéro du cube précédente du cube précédente
+	positionCube1 = snake.index[numeroCube1]# variable de la position du cube précédent
+	positionCube2 = snake.index[numeroCube2]# variable de la position du cube précédent du cube précédente
+	save1 = int() #variable pour stocker le i précédent
+	verif = bool()
+	#variable de déplacement dans le plan :
 	x = 1
 	y = 5
 	z = 5*5
-	
-	#vérification alignement ou angle droit
-	if numeroCube >= 3:
-		for i in range( cubePositif ):
-			test += cubePositif[i]
-			
-			
-			
-			#vérification alignement
-			if numeroCube == test :
-				if alignes(position, positionCube1, positionCube2):
-					return True
-				else:
-					return False
-			#vérification alignement ou angle droit
-			elif numeroCube < test :
-				
-				if numeroCube1 <= test - cubePositif[i]:
-					save1 = test - cubePositif[i]
-				else:
-					save1 = test
-				if numeroCube2 <= test - cubePositif[i]:
-					save2 = test - cubePositif[i]
-				else:
-					save2 = test
-				 
-				if test == save1 :
-					if test == save2:
-						if alignes(position, positionCube1, positionCube2):
-							return True
-						else:
-							return False
-					elif test == save2 + cubePositif[i]:
-						if angleDroit(position, positionCube1, positionCube2):
-							return True
-						else:
-							return False 
-					else:
-						return false
-				elif test == save1 + cubePositif[i]:
-					if save1 == save2:
-						if angleDroit(position, positionCube1, positionCube2):
-							return True
-						else:
-							return False 
-					else:
-						return False
-				else:
-					return False
-				
-				
-				
-	#vérification pour le 2ème cube s'il se positionne bien			
-	elif numeroCube == 2 :
+
+        if numeroCube == 2 : # première solution pour le deuxième cube cube
 		if positionCube1 - x == position:
 			return True
 		elif positionCube1 + x == position:
@@ -95,11 +45,38 @@ def coherence(numeroCube,position,snake,cubePositif):
 		elif positionCube1 + z == position:
 			return True
 		else:
-			return False
-		
-		
-	else :
-		return True
+			return False 
+
+        
+        elif numeroCube >= 3: # deuxième solution pour le 3eme cube
+            if alignes(position,posistionCube1,positionCube2):
+                verif = True
+            elif angleDroit(position,positionCube1,positionCube2):
+                verif = False
+            else:
+                return False
+
+            for i in range(len(cubePositif)):
+                test += cubePositif[i]
+                if i >=1:
+                    save1 += cubePositif[i-1]
+                
+                if verif:
+                    if numeroCube <= test and cubePositif[i] > 1 and save1< numeroCube1 <= test:
+                        return True
+                    else:
+                        return False
+                else:
+                    if numeroCube <= test and cubePositif[i] > 1 and save1< numeroCube1 <= test:
+                        return False
+                    else:
+                        return True
+                    
+                
+
+        else: #troisième solution c'est le premier cube
+            return True
+				
 
 def alignes(position, cube1, cube2):
 	#variable de déplacement dans le plan
