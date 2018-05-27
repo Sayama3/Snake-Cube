@@ -1,7 +1,7 @@
 def valid(numeroCube,position,snake,cube):
 	if (cube[position]) != 0:
 		return False
-	else:
+	else: 
 		cubePositif = positif(cube)
 		if coherence(numeroCube,position,snake,cubePositif):
 			return True
