@@ -57,7 +57,7 @@ def solve(cube, position, direction, snake, Numpiece):
     serpent = len(snake)
     if len(snake) == serpent:
         print("Solution")
-        print(visualisationCube(cube))
+        visualisationCube(cube)
         return
     longueur, snake = snake[0], snake[1:]
     Mvalides = moves(position, direction, cube, Numpiece, longueur)
