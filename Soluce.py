@@ -52,6 +52,7 @@ def moves(position, direction, cube, Numpiece, longueur):
     return Mvalides
 
 def solve(cube, position, direction, snake, Numpiece):
+  import time
     """le solveur de cube"""
     serpent = len(snake)
     if len(snake) == serpent:
@@ -64,6 +65,7 @@ def solve(cube, position, direction, snake, Numpiece):
         Nposition = place(cube, position, Ndirections, longueur, Numpiece)
         solve(cube, Nposition, Ndirections, snake, Numpiece+longueur)
         unplace(cube, position, Ndirections, longueur)
+  print(position,time.sleep(0.3))
         
 
 def main(pos, xdep, snake, cube, place, solve):
