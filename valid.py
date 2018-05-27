@@ -3,7 +3,7 @@ def valid(numeroCube,position,snake,cube):
 		return False
 	else:
 		cubePositif = positif(cube)
-		if coherence(numeroCube,position,snake,cubePositif) == True:
+		if coherence(numeroCube,position,snake,cubePositif):
 			return True
 		else:
 			return False
